@@ -1,15 +1,12 @@
 class Solution {
     public int[] buildArray(int[] nums) {
-        ArrayList<Integer> ans = new ArrayList<>();
-        for (int num : nums) {
-            ans.add(nums[num]); // Adding the element itself, not nums[num]
+        int mask = 1023;
+        for (int i = 0; i < nums.length; i++) {
+            nums[i] |= (nums[nums[i]] & mask) << 10;
         }
-
-        // Convert ArrayList<Integer> to int[]
-        int[] result = new int[ans.size()];
-        for (int i = 0; i < ans.size(); i++) {
-            result[i] = ans.get(i);
+        for (int i = 0; i < nums.length; i++) {
+            nums[i] >>= 10;
         }
-        return result;
+        return nums;
     }
 }
