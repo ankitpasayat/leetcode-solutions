@@ -12,8 +12,10 @@
  * }
  */
 
-function isSameTree(p: TreeNode | null, q: TreeNode | null): boolean {
-    if (!p && !q) return true;
-    if (!p || !q) return false;
-    return p.val === q.val && isSameTree(p.left, q.left) && isSameTree(p.right, q.right);
-};
+function isSameTree(first: TreeNode | null, second: TreeNode | null): boolean {
+    if (!first && !second) return true;
+    if (!first || !second) return false;
+    return first?.val === second?.val
+        && isSameTree(first?.left, second?.left)
+        && isSameTree(first?.right, second.right);
+}
