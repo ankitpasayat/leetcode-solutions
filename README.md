@@ -1,2 +1,4 @@
 # pasayat-leetcode
-Collection of LeetCode questions to ace the coding interview! - Created using [LeetHub](https://github.com/QasimWani/LeetHub)
+Collection of LeetCode questions I have solved starting 02/26/24
+
+Click [here](https://leetcode.com/pasayat/) for my leetcode profile.
