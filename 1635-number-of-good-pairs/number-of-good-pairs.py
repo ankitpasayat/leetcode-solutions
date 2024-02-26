@@ -1,3 +1,8 @@
 class Solution:
     def numIdenticalPairs(self, nums: List[int]) -> int:
-        return sum([comb(n, 2) for n in Counter(nums).values()])
+        seen, count = {}, 0
+        for num in nums:
+            temp = seen.get(num, 0)
+            count += temp
+            seen[num] = temp + 1
+        return count
