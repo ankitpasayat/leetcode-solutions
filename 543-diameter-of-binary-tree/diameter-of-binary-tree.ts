@@ -13,16 +13,16 @@
  */
 
 function diameterOfBinaryTree(root: TreeNode | null): number {
-    let d = 0
-    function helper(node: TreeNode | null): number {
-        if (node === null) {
-            return 0;
-        }
-        let l = helper(node.left);
-        let r = helper(node.right);
-        d = Math.max(d, l + r);
-        return 1 + Math.max(l, r);
+    let diameter = 0;
+
+    function depth(node: TreeNode | null): number {
+        if (node === null) return 0;
+        let leftDepth = depth(node.left);
+        let rightDepth = depth(node.right);
+        diameter = Math.max(diameter, leftDepth + rightDepth);
+        return Math.max(leftDepth, rightDepth) + 1;
     }
-    helper(root);
-    return d;
-};
+
+    depth(root);
+    return diameter;
+}
