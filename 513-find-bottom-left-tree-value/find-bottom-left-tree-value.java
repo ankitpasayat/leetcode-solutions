@@ -13,26 +13,38 @@
  * }
  * }
  */
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ * int val;
+ * TreeNode left;
+ * TreeNode right;
+ * TreeNode() {}
+ * TreeNode(int val) { this.val = val; }
+ * TreeNode(int val, TreeNode left, TreeNode right) {
+ * this.val = val;
+ * this.left = left;
+ * this.right = right;
+ * }
+ * }
+ */
 class Solution {
-    public int findBottomLeftValue(TreeNode root) {
-        Queue<TreeNode> q = new ArrayDeque<>();
-        q.add(root);
-        int res = 0;
-        while (q.size() > 0) {
-            int s = q.size();
-            for (int i = 0; i < s; i++) {
-                TreeNode node = q.remove();
-                if (i == 0) {
-                    res = node.val;
-                }
-                if (node.left != null) {
-                    q.add(node.left);
-                }
-                if (node.right != null) {
-                    q.add(node.right);
-                }
-            }
+    int leftmost = 0;
+    int leftmostrow = -1;
+
+    void visit(TreeNode root, int depth) {
+        if (root == null)
+            return;
+        if (depth > leftmostrow) {
+            leftmost = root.val;
+            leftmostrow = depth;
         }
-        return res;
+        visit(root.left, depth + 1);
+        visit(root.right, depth + 1);
+    }
+
+    public int findBottomLeftValue(TreeNode root) {
+        visit(root, 0);
+        return leftmost;
     }
 }
