@@ -3,9 +3,12 @@
 
 public class Solution extends VersionControl {
     public int firstBadVersion(int n) {
-        int l = 1, r = n;
+        if (n == 1) {
+            return 1;
+        }
+        int l = 1, m, r = n;
         while (l < r) {
-            int m = l + (r - l) / 2;
+            m = l + (r - l) / 2;
             if (isBadVersion(m)) {
                 r = m;
             } else {
