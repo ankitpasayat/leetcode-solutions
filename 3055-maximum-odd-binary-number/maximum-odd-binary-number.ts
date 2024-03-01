@@ -1,15 +1,3 @@
 function maximumOddBinaryNumber(s: string): string {
-    let zero = "", one = "";
-    for (const ch of s) {
-        if (ch === "0") {
-            zero += "0";
-        }
-        else {
-            one += "1";
-        }
-    }
-    if (one === "") {
-        return s;
-    }
-    return one.substring(1).concat(zero).concat("1").trim();
+    return '1'.repeat(s.split('').filter((v: string) => v === '1').length - 1) + '0'.repeat(s.split('').filter((v: string) => v === '0').length) + '1';
 };
