@@ -1,17 +1,12 @@
 class Solution {
     public boolean canConstruct(String ransomNote, String magazine) {
-        if (ransomNote.length() > magazine.length()) {
-            return false;
-        }
-        int[] alphabets_counter = new int[26];
-        for (char c : magazine.toCharArray()) {
-            alphabets_counter[c - 'a']++;
-        }
+        int[] alphabet = new int[26];
         for (char c : ransomNote.toCharArray()) {
-            if (alphabets_counter[c - 'a'] == 0) {
+            int i = magazine.indexOf(c, alphabet[c - 'a']);
+            if (i == -1) {
                 return false;
             }
-            alphabets_counter[c - 'a']--;
+            alphabet[c - 'a'] = i + 1;
         }
         return true;
     }
