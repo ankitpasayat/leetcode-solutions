@@ -8,17 +8,15 @@
 var solution = function (isBadVersion: any) {
 
     return function (n: number): number {
-        let l = 1, r = n, m = 0, res = -1;
-        while (l <= r) {
-            m = Math.floor((l + r) / 2);
-            console.log(l, m, r);
+        let l = 1, r = n;
+        while (l < r) {
+            let m = l + Math.floor((r - l) / 2);
             if (isBadVersion(m)) {
-                res = m;
-                r = m - 1;
+                r = m;
             } else {
                 l = m + 1;
             }
         }
-        return res;
+        return l;
     };
 };
