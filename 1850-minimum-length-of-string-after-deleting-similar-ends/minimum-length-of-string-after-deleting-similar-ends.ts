@@ -3,10 +3,10 @@ function minimumLength(s: string): number {
     while (l < r && s[l] === s[r]) {
         let ch = s[l];
         while (l <= r && s[l] === ch) {
-            l++;
+            l += 1;
         }
         while (l <= r && s[r] === ch) {
-            r--;
+            r -= 1;
         }
     }
     return (l > r) ? 0 : r - l + 1;
