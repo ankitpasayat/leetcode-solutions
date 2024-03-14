@@ -1,0 +1,8 @@
+function pivotInteger(n: number): number {
+    let x = Math.sqrt(n * (n + 1) / 2);
+    if (x % 1 !== 0) {
+        return -1;
+    } else {
+        return Math.floor(x);
+    }
+};
