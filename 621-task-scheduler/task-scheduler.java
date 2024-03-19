@@ -2,7 +2,7 @@ class Solution {
     public int leastInterval(char[] tasks, int n) {
         int[] freq = new int[26];
         for (char task : tasks) {
-            freq[task - 'A']++;
+            freq[task - 'A'] += 1;
         }
         Arrays.sort(freq);
         int chunk = freq[25] - 1;
