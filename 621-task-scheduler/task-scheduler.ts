@@ -1,7 +1,7 @@
 function leastInterval(tasks: string[], n: number): number {
     let freq = Array(26).fill(0);
     for (let task of tasks) {
-        freq[task.charCodeAt(0) - 'A'.charCodeAt(0)]++;
+        freq[task.charCodeAt(0) - 'A'.charCodeAt(0)] += 1;
     }
     freq.sort((a, b) => b - a);
     let chunk = freq[0] - 1;
