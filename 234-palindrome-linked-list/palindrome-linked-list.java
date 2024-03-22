@@ -27,8 +27,9 @@ class Solution {
         fast = head;
         slow = prev;
         while (slow != null) {
-            if (fast.val != slow.val)
+            if (fast.val != slow.val) {
                 return false;
+            }
             fast = fast.next;
             slow = slow.next;
         }
