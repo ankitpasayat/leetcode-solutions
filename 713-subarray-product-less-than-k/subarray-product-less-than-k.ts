@@ -6,7 +6,7 @@ function numSubarrayProductLessThanK(nums: number[], k: number): number {
         product *= nums[right];
         while (product >= k) product /= nums[left++];
         count += 1 + (right - left);
-        right++;
+        right += 1;
     }
     return count;
 };
