@@ -5,8 +5,9 @@ class Solution {
         for (char c : s.toCharArray()) {
             if (c == '(') {
                 count += 1;
-                if (maxNum < count)
+                if (maxNum < count) {
                     maxNum = count;
+                }
             } else if (c == ')') {
                 count -= 1;
             }
