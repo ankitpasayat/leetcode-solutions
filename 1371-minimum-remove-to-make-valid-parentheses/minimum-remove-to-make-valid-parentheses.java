@@ -1,43 +1,35 @@
 class Solution {
     public String minRemoveToMakeValid(String s) {
-        StringBuilder R = new StringBuilder();
-        int open = 0, close = 0;
-        for (char ch : s.toCharArray()) {
-            if (Character.isAlphabetic(ch)) {
-                R.append(ch);
-            } else if (ch == '(') {
-                open++;
-                R.append(ch);
-            } else {
-                if (open > close) {
-                    R.append(ch);
-                    close++;
+        int f = 0;
+        int l = s.length() - 1;
+        String start = "", end = "", result;
+        char[] arr = s.toCharArray();
+        int open = 0;
+        for (int i = 0; i < arr.length; i++) {
+            if (arr[i] == '(') {
+                open += 1;
+            } else if (arr[i] == ')') {
+                if (open == 0) {
+                    arr[i] = '*';
                 } else {
-                    open = open < 0 ? 0 : open--;
+                    open -= 1;
                 }
             }
         }
-        s = R.toString();
-        R.setLength(0);
-        int n = s.length();
-        open = close = 0;
+        for (int i = arr.length - 1; i >= 0; i--) {
+            if (open > 0 && arr[i] == '(') {
+                arr[i] = '*';
+                open -= 1;
+            }
+        }
 
-        for (int i = n - 1; i >= 0; i--) {
-            char ch = s.charAt(i);
-            if (Character.isAlphabetic(ch)) {
-                R.insert(0, ch);
-            } else if (ch == ')') {
-                R.insert(0, ch);
-                close++;
-            } else {
-                if (close > open) {
-                    R.insert(0, ch);
-                    open++;
-                } else {
-                    close = close < 0 ? 0 : close--;
-                }
+        int p = 0;
+        for (int i = 0; i < arr.length; i++) {
+            if (arr[i] != '*') {
+                arr[p++] = arr[i];
             }
         }
-        return R.toString();
+        return new String(arr).substring(0, p);
     }
+
 }
